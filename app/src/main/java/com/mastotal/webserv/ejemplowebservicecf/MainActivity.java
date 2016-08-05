@@ -9,11 +9,15 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     Button boton;
     TextView textView;
     ProgressBar progressBar;
+    List<MyYTask> taskList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         textView.setMovementMethod(new ScrollingMovementMethod());// esta linea hace que el scroll funcione
 
+        taskList = new ArrayList<>();
 
 
         boton.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
             super.onPreExecute();
             cargarDatos("Inicio de carga");
             progressBar.setVisibility(View.VISIBLE);
+
+            // agregar hilos a la list que tenemos
+            taskList.add(this);
         }
 
         @Override
@@ -79,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(s);
             cargarDatos(s);
             progressBar.setVisibility(View.GONE);
+            //remover el hilo
+            taskList.remove(this);
         }
 
         @Override
