@@ -54,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
             for (int i = 0; i<= 100; i++){
                     publishProgress("Numero: " + i);
+                try {
+                    Thread.sleep(100);// eN MILISEGUNDOS
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
             return "Terminamos";
