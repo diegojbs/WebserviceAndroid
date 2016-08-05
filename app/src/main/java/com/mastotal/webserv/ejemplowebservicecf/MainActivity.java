@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     Button boton;
     TextView textView;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
         boton = (Button) findViewById(R.id.boton);
         textView = (TextView) findViewById(R.id.textView);
+        progressBar = (ProgressBar) findViewById(R.id.progressbar);
+        progressBar.setVisibility(View.INVISIBLE);
+
         textView.setMovementMethod(new ScrollingMovementMethod());// esta linea hace que el scroll funcione
+
 
 
         boton.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             cargarDatos("Inicio de carga");
+            progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -68,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             cargarDatos(s);
+            progressBar.setVisibility(View.GONE);
         }
 
         @Override
