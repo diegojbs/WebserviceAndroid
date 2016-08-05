@@ -37,7 +37,10 @@ public class MainActivity extends AppCompatActivity {
                     cargarDatos("Numero: " + i);
                 }*/
                 MyYTask task = new MyYTask();
-                task.execute();
+
+                //task.execute();
+                //Cambiar a forma paralela
+                task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
             }
         });
@@ -59,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
 
-            for (int i = 0; i<= 100; i++){
+            for (int i = 0; i<= 10; i++){
                     publishProgress("Numero: " + i);
                 try {
-                    Thread.sleep(100);// eN MILISEGUNDOS
+                    Thread.sleep(1000);// eN MILISEGUNDOS
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
