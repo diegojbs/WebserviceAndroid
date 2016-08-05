@@ -64,5 +64,11 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(s);
             cargarDatos(s);
         }
+
+        @Override
+        protected void onProgressUpdate(String... values) {
+//            super.onProgressUpdate(values);
+            cargarDatos(values[0]);
+        }
     }
 }
