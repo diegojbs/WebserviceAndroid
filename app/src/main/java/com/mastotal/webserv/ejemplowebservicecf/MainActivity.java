@@ -52,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
 
+            for (int i = 0; i<= 100; i++){
+                    publishProgress("Numero: " + i);
+            }
+
             return "Terminamos";
         }
 
