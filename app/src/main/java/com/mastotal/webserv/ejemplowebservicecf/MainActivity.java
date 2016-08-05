@@ -1,5 +1,6 @@
 package com.mastotal.webserv.ejemplowebservicecf;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -26,9 +27,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                for (int i = 0; i<= 100; i++){
+                /*for (int i = 0; i<= 100; i++){
                     cargarDatos("Numero: " + i);
-                }
+                }*/
+                MyYTask task = new MyYTask();
+                task.execute();
 
             }
         });
@@ -36,5 +39,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void cargarDatos(String datos){
         textView.append(datos + "\n");
+    }
+
+    private class MyYTask extends AsyncTask<String, String, String>{
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            cargarDatos("Inicio de carga");
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            return "Terminamos";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            cargarDatos(s);
+        }
     }
 }
