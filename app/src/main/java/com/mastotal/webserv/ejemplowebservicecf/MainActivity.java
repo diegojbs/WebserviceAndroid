@@ -61,8 +61,10 @@ public class MainActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             cargarDatos("Inicio de carga");
-            progressBar.setVisibility(View.VISIBLE);
 
+            if(taskList.size() == 0) {
+                progressBar.setVisibility(View.VISIBLE);
+            }
             // agregar hilos a la list que tenemos
             taskList.add(this);
         }
@@ -86,9 +88,15 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             cargarDatos(s);
-            progressBar.setVisibility(View.GONE);
+
             //remover el hilo
             taskList.remove(this);
+            if (taskList.size() == 0){
+                progressBar.setVisibility(View.GONE);
+            }
+
+
+
         }
 
         @Override

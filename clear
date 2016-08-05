@@ -1,0 +1,53 @@
+[33mcommit 82579e37749cb57af865308cb557a7cb7cb15822[m
+Author: diegojbs <diego-jbs@hotmail.com>
+Date:   Fri Aug 5 14:33:57 2016 -0500
+
+    Saber cuantos hilos tenemos - ProgressBar hasta el final
+
+[33mcommit b4e439d471d8430e4cfc3d68c8bf6ea57256ae1d[m
+Author: diegojbs <diego-jbs@hotmail.com>
+Date:   Fri Aug 5 14:23:29 2016 -0500
+
+    Hilos en forma paralela
+
+[33mcommit 5007628e88dcead20dab024bb7d849077b1acbe9[m
+Author: diegojbs <diego-jbs@hotmail.com>
+Date:   Fri Aug 5 14:08:37 2016 -0500
+
+    Funcionamiento ProgressBar
+
+[33mcommit 9f6a8d94c6012b025b64d95ca2a0edb022fe87a8[m
+Author: diegojbs <diego-jbs@hotmail.com>
+Date:   Fri Aug 5 13:57:04 2016 -0500
+
+    Agragar progressbar
+
+[33mcommit 6a9f8182127596ff31c7375320843f418872a2ec[m
+Author: diegojbs <diego-jbs@hotmail.com>
+Date:   Fri Aug 5 13:51:53 2016 -0500
+
+    Emular proceso lento
+
+[33mcommit 25ccf9c8ba6ceca6ba486206b51ce44abb2d3dfc[m
+Author: diegojbs <diego-jbs@hotmail.com>
+Date:   Fri Aug 5 13:46:02 2016 -0500
+
+    Actualizar hilo principal
+
+[33mcommit e961013637b754230bddbc7fbd1195eaffa27e29[m
+Author: diegojbs <diego-jbs@hotmail.com>
+Date:   Fri Aug 5 13:40:01 2016 -0500
+
+    Ejecutar en BackGroud
+
+[33mcommit 9ed6852668fb03e9bca0f053397af1fc72e77d3d[m
+Author: diegojbs <diego-jbs@hotmail.com>
+Date:   Fri Aug 5 12:55:40 2016 -0500
+
+    V 1.1  - Se prepara el AsyncTaks
+
+[33mcommit f2e1410df9a3299225aee2619ae4af5a30baa646[m
+Author: diegojbs <diego-jbs@hotmail.com>
+Date:   Fri Aug 5 11:45:18 2016 -0500
+
+    V 1.0 - Una impresion de datos desde un boton en la pantalla.
