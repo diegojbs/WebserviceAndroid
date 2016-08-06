@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mastotal.webserv.ejemplowebservicecf.POJO.Usuario;
+import com.mastotal.webserv.ejemplowebservicecf.Parsers.UsuarioXMLParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,9 +125,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            cargarDatos(s);
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            //llamado a parsear los datos
+            usuarioList = UsuarioXMLParser.parser(result);
+
+            cargarDatos(result);
 
             //remover el hilo
             taskList.remove(this);
