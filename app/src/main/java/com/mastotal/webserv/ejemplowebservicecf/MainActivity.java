@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,11 +45,12 @@ public class MainActivity extends AppCompatActivity {
                 /*for (int i = 0; i<= 100; i++){
                     cargarDatos("Numero: " + i);
                 }*/
-                MyYTask task = new MyYTask();
 
-                //task.execute();
-                //Cambiar a forma paralela
-                task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                if (isOnLine()){
+                    pedirDatos();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Sin conexi+on", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -69,6 +71,14 @@ public class MainActivity extends AppCompatActivity {
         }else{
             return false;
         }
+    }// Fin metodo verificar online
+
+    // metodo pedir datos
+    public void pedirDatos(){
+
+        MyYTask task = new MyYTask();
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
     }
 
 
