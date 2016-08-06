@@ -29,6 +29,25 @@ public class UsuarioXMLParser{
 
             int eventType = parser.getEventType();
 
+            //leer el XML de informacion
+            while(eventType != XmlPullParser.END_DOCUMENT){
+                switch (eventType){
+                    case XmlPullParser.START_TAG:
+                        currentTagName = parser.getName();
+                        if(currentTagName.equals("usuario")){
+                            inDataItemTag = true;
+                            usuario = new Usuario();
+                            usuarioList.add(usuario);
+                        }
+                        break;
+                    case XmlPullParser.END_TAG:
+                        break;
+                    case XmlPullParser.TEXT:
+                        break;
+                }
+
+            }
+
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         }
