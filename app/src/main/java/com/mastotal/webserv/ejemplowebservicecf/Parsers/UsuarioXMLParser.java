@@ -66,10 +66,15 @@ public class UsuarioXMLParser{
                         break;
                 }
 
-            }
+                // leer el siguiente eveto
+                eventType = parser.next();
 
-        } catch (XmlPullParserException e) {
+            }
+            return usuarioList;
+
+        } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
     }
 
