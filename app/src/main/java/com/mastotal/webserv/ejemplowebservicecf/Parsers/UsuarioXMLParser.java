@@ -52,7 +52,7 @@ public class UsuarioXMLParser{
                         // el evento que nos trae el texto como tal
                         if (inDataItemTag && usuario != null){
                             switch (currentTagName){
-                                case "usuarioID":
+                                case "usuarioid":
                                     usuario.setUsuarioId(Integer.parseInt(parser.getText()));
                                     break;
                                 case "nombre":

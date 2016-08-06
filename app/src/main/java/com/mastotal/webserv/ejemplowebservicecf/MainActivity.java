@@ -65,8 +65,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void cargarDatos(String datos){
-        textView.append(datos + "\n");
+    public void cargarDatos(){
+
+        //textView.append(datos + "\n");
+        if (usuarioList != null){
+            //forech
+            for (Usuario usuario: usuarioList) {
+                textView.append(usuario.getUsuarioId() + "\n");
+                textView.append(usuario.getNombre() + "\n");
+                textView.append(usuario.getTwitter() + "\n");
+
+            }
+
+        }
     }
 
     //verificar conectidad a internet
@@ -97,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            cargarDatos("Inicio de carga");
+            //cargarDatos("Inicio de carga");
 
             if(taskList.size() == 0) {
                 progressBar.setVisibility(View.VISIBLE);
@@ -131,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             //llamado a parsear los datos
             usuarioList = UsuarioXMLParser.parser(result);
 
-            cargarDatos(result);
+            cargarDatos();
 
             //remover el hilo
             taskList.remove(this);
@@ -146,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(String... values) {
 //            super.onProgressUpdate(values);
-            cargarDatos(values[0]);
+           // cargarDatos(values[0]);
         }
     }
 }
