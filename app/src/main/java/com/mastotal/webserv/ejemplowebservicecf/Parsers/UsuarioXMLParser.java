@@ -41,6 +41,12 @@ public class UsuarioXMLParser{
                         }
                         break;
                     case XmlPullParser.END_TAG:
+                        //detectar cuando se termina
+                        if(parser.getName().equals("usuario")){
+                            inDataItemTag = false;
+
+                        }
+                        currentTagName = "";
                         break;
                     case XmlPullParser.TEXT:
                         break;
