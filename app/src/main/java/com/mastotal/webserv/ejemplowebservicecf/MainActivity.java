@@ -47,9 +47,10 @@ public class MainActivity extends AppCompatActivity {
                 }*/
 
                 if (isOnLine()){
+                    Toast.makeText(getApplicationContext(), "Conectado a internet", Toast.LENGTH_SHORT).show();
                     pedirDatos();
                 }else{
-                    Toast.makeText(getApplicationContext(), "Sin conexi+on", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Sin conexión", Toast.LENGTH_SHORT).show();
                 }
 
             }
