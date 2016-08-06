@@ -13,6 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mastotal.webserv.ejemplowebservicecf.POJO.Usuario;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     ProgressBar progressBar;
     List<MyYTask> taskList;
+
+    // crear la lista de objetos Usuario
+    List<Usuario> usuarioList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
