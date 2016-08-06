@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if (isOnLine()){
                     Toast.makeText(getApplicationContext(), "Conectado a internet", Toast.LENGTH_SHORT).show();
-                    pedirDatos();
+                    //pedirDatos("http://maloschistes.com/maloschistes.com/jose/usuarios.xml");
+                    pedirDatos("http://chat.mastotal.com/usuarios.xml");
                 }else{
                     Toast.makeText(getApplicationContext(), "Sin conexión", Toast.LENGTH_SHORT).show();
                 }
@@ -75,10 +76,11 @@ public class MainActivity extends AppCompatActivity {
     }// Fin metodo verificar online
 
     // metodo pedir datos
-    public void pedirDatos(){
+    public void pedirDatos(String uri){
 
         MyYTask task = new MyYTask();
-        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        task.execute(uri);
+        //task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
     }
 
@@ -100,16 +102,19 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
 
-            for (int i = 0; i<= 10; i++){
+            /*for (int i = 0; i<= 10; i++){
                     publishProgress("Numero: " + i);
                 try {
                     Thread.sleep(1000);// eN MILISEGUNDOS
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }
+            }*/
 
-            return "Terminamos";
+            String content = HttpManager.getData(params[0]);
+
+            //return "Terminamos";
+            return content;
         }
 
         @Override
