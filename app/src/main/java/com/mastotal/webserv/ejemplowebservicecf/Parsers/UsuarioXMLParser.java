@@ -49,6 +49,20 @@ public class UsuarioXMLParser{
                         currentTagName = "";
                         break;
                     case XmlPullParser.TEXT:
+                        // el evento que nos trae el texto como tal
+                        if (inDataItemTag && usuario != null){
+                            switch (currentTagName){
+                                case "usuarioID":
+                                    usuario.setUsuarioId(Integer.parseInt(parser.getText()));
+                                    break;
+                                case "nombre":
+                                    usuario.setNombre(parser.getText());
+                                    break;
+                                case "twitter":
+                                    usuario.setTwitter(parser.getText());
+                                    break;
+                            }
+                        }
                         break;
                 }
 
