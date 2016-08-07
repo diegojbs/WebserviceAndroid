@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mastotal.webserv.ejemplowebservicecf.POJO.Usuario;
+import com.mastotal.webserv.ejemplowebservicecf.Parsers.UsuarioJSONParser;
 import com.mastotal.webserv.ejemplowebservicecf.Parsers.UsuarioXMLParser;
 
 import java.util.ArrayList;
@@ -56,7 +57,12 @@ public class MainActivity extends AppCompatActivity {
                 if (isOnLine()){
                     Toast.makeText(getApplicationContext(), "Conectado a internet", Toast.LENGTH_SHORT).show();
                     //pedirDatos("http://maloschistes.com/maloschistes.com/jose/usuarios.xml");
-                    pedirDatos("http://chat.mastotal.com/usuarios.xml");
+                    // Pedir datos con XML
+                    //pedirDatos("http://chat.mastotal.com/usuarios.xml");
+                    //Pedir datos con JSON
+                    pedirDatos("http://maloschistes.com/maloschistes.com/jose/webservice.php");
+
+
                 }else{
                     Toast.makeText(getApplicationContext(), "Sin conexión", Toast.LENGTH_SHORT).show();
                 }
@@ -139,8 +145,11 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            //llamado a parsear los datos
-            usuarioList = UsuarioXMLParser.parser(result);
+            //llamado a parsear los datos XML
+            //usuarioList = UsuarioXMLParser.parser(result);
+
+            //llamado a parsear los datos JSON
+            usuarioList = UsuarioJSONParser.parse(result);
 
             cargarDatos();
 
