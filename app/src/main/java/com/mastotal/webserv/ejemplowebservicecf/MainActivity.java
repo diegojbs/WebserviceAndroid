@@ -68,11 +68,14 @@ public class MainActivity extends AppCompatActivity {
                     // Pedir datos con XML
                     //pedirDatos("http://chat.mastotal.com/usuarios.xml");
                     //Pedir datos con JSON
-                    pedirDatos("http://maloschistes.com/maloschistes.com/jose/webservice.php");
+                    //pedirDatos("http://maloschistes.com/maloschistes.com/jose/webservice.php");
                     //pedir datos sin seguridad
                     //pedirDatos("http://mastotal.com/webservice/webservice.php");
                     //pedir datos con seguridad
                     //pedirDatos("http://maloschistes.com/maloschistes.com/jose/s/webservice.php");
+
+                    //webservice con imagenes
+                    pedirDatos("http://maloschistes.com/maloschistes.com/jose/webserviceI.php");
 
 
                 }else{

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.mastotal.webserv.ejemplowebservicecf.POJO.Usuario;
 import com.mastotal.webserv.ejemplowebservicecf.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +59,10 @@ public class MyAdapter extends BaseAdapter{
         }
         Usuario usuario = getItem(position);
         viewHolder.title.setText(usuario.getNombre());
+
+        //uso de picasso
+        Picasso.with(context).load(usuario.getTwitter()).into(viewHolder.imageView);
+
         return convertView;
     }
 
@@ -67,7 +72,10 @@ public class MyAdapter extends BaseAdapter{
         ImageView imageView;
 
         public ViewHolder(View item){
+
             title  = (TextView) item.findViewById(R.id.title);
+            imageView = (ImageView) item.findViewById(R.id.imageView);
         }
+
     }
 }
