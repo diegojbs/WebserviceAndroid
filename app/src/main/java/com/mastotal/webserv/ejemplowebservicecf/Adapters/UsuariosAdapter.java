@@ -58,7 +58,7 @@ public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.ViewHo
         public ViewHolder(View item) {
             super(item);
             title = (TextView) item.findViewById(R.id.title);
-            imageView = (ImageView) item.findViewById(R.id.textView);
+            imageView = (ImageView) item.findViewById(R.id.imageView);
         }
     }
 }
