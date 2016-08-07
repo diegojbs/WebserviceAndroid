@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     // crear la lista de objetos Usuario
     List<Usuario> usuarioList;
 
+    ListView listView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.textView);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
         progressBar.setVisibility(View.INVISIBLE);
+
+        listView = (ListView) findViewById(R.id.listView);
 
         textView.setMovementMethod(new ScrollingMovementMethod());// esta linea hace que el scroll funcione
 
