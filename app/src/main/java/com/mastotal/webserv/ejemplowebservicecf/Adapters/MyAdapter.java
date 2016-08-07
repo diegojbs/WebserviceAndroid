@@ -5,8 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.mastotal.webserv.ejemplowebservicecf.POJO.Usuario;
+import com.mastotal.webserv.ejemplowebservicecf.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +47,18 @@ public class MyAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        // en este metodo se va a formar la vista
+
         return null;
+    }
+
+    // Crear ViewHolder una vista para los items
+    public class ViewHolder{
+        TextView title;
+        ImageView imageView;
+
+        public ViewHolder(View item){
+            title  = (TextView) item.findViewById(R.id.title);
+        }
     }
 }
