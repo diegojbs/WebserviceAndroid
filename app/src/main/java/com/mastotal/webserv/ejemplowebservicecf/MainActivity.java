@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mastotal.webserv.ejemplowebservicecf.Adapters.MyAdapter;
+import com.mastotal.webserv.ejemplowebservicecf.Adapters.UsuariosAdapter;
 import com.mastotal.webserv.ejemplowebservicecf.POJO.Usuario;
 import com.mastotal.webserv.ejemplowebservicecf.Parsers.UsuarioJSONParser;
 import com.mastotal.webserv.ejemplowebservicecf.Parsers.UsuarioXMLParser;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     //MyAdapter adapter;
 
     RecyclerView recyclerView;
-    //Adapter
+    UsuariosAdapter adapter;
 
 
     @Override
@@ -46,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        boton = (Button) findViewById(R.id.boton);
+        /*boton = (Button) findViewById(R.id.boton);
         textView = (TextView) findViewById(R.id.textView);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
-        progressBar.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.INVISIBLE);*/
 
         //Configurar recyclerView
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -60,39 +61,18 @@ public class MainActivity extends AppCompatActivity {
 
         //textView.setMovementMethod(new ScrollingMovementMethod());// esta linea hace que el scroll funcione
 
-        taskList = new ArrayList<>();
+        //taskList = new ArrayList<>();
+
+        if (isOnLine()){
+            //Toast.makeText(getApplicationContext(), "Conectado a internet", Toast.LENGTH_SHORT).show();
+            //webservice con imagenes
+            pedirDatos("http://maloschistes.com/maloschistes.com/jose/webserviceI.php");
 
 
-        boton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        }else{
+            Toast.makeText(getApplicationContext(), "Sin conexión", Toast.LENGTH_SHORT).show();
+        }
 
-                /*for (int i = 0; i<= 100; i++){
-                    cargarDatos("Numero: " + i);
-                }*/
-
-                if (isOnLine()){
-                    Toast.makeText(getApplicationContext(), "Conectado a internet", Toast.LENGTH_SHORT).show();
-                    //pedirDatos("http://maloschistes.com/maloschistes.com/jose/usuarios.xml");
-                    // Pedir datos con XML
-                    //pedirDatos("http://chat.mastotal.com/usuarios.xml");
-                    //Pedir datos con JSON
-                    //pedirDatos("http://maloschistes.com/maloschistes.com/jose/webservice.php");
-                    //pedir datos sin seguridad
-                    //pedirDatos("http://mastotal.com/webservice/webservice.php");
-                    //pedir datos con seguridad
-                    //pedirDatos("http://maloschistes.com/maloschistes.com/jose/s/webservice.php");
-
-                    //webservice con imagenes
-                    pedirDatos("http://maloschistes.com/maloschistes.com/jose/webserviceI.php");
-
-
-                }else{
-                    Toast.makeText(getApplicationContext(), "Sin conexión", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
     }
 
     public void cargarDatos(){
@@ -108,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }*/
-        adapter = new MyAdapter(getApplicationContext(),usuarioList);
-        listView.setAdapter(adapter);
+        adapter = new UsuariosAdapter(getApplicationContext(),usuarioList);
+        recyclerView.setAdapter(adapter);
     }
 
     //verificar conectidad a internet
@@ -142,11 +122,11 @@ public class MainActivity extends AppCompatActivity {
             super.onPreExecute();
             //cargarDatos("Inicio de carga");
 
-            if(taskList.size() == 0) {
+            /*if(taskList.size() == 0) {
                 progressBar.setVisibility(View.VISIBLE);
             }
             // agregar hilos a la list que tenemos
-            taskList.add(this);
+            taskList.add(this);*/
         }
 
         @Override
@@ -161,7 +141,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }*/
 
-            String content = HttpManager.getData(params[0], "pepito", "pepito");
+            //String content = HttpManager.getData(params[0], "pepito", "pepito");
+            String content = HttpManager.getData(params[0]);
 
             //return "Terminamos";
             return content;
@@ -185,14 +166,14 @@ public class MainActivity extends AppCompatActivity {
 
             if (result == null){
                 Toast.makeText(MainActivity.this, "No se pudo conectar", Toast.LENGTH_SHORT).show();
-                progressBar.setVisibility(View.GONE);
+                //progressBar.setVisibility(View.GONE);
                 return; // para no llegar al final para que no salga error
             }
 
             usuarioList = UsuarioJSONParser.parse(result);
 
             cargarDatos();
-            progressBar.setVisibility(View.GONE);
+            //progressBar.setVisibility(View.GONE);
 
 
 
