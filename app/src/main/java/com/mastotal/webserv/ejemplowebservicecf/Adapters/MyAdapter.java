@@ -48,11 +48,20 @@ public class MyAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // en este metodo se va a formar la vista
-
-        return null;
+        ViewHolder viewHolder;
+        if (convertView == null){
+            convertView = layoutInflater.inflate(R.layout.item,parent,false);
+            viewHolder = new ViewHolder(convertView);
+            convertView.setTag(viewHolder);
+        }else{
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+        Usuario usuario = getItem(position);
+        viewHolder.title.setText(usuario.getNombre());
+        return convertView;
     }
 
-    // Crear ViewHolder una vista para los items
+    // Crear ViewHolder una vista para los items, se debe crear antes del getView Obligatoriamente
     public class ViewHolder{
         TextView title;
         ImageView imageView;
