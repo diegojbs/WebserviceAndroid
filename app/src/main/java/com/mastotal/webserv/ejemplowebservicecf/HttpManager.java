@@ -54,13 +54,16 @@ public class HttpManager {
         //inicio codigo para entrar al webservice con seguridad
         byte[] loginBytes = (username + ":" + password).getBytes();
         StringBuilder loginBuilder = new StringBuilder()
-                .append("Basic")
+                .append("Basic ")
                 .append(Base64.encodeToString(loginBytes, Base64.DEFAULT));
         //fin codigo para entrar al webservice con seguridad
 
         try {
             URL url = new URL(uri);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+            connection.addRequestProperty("Authorization", loginBuilder.toString());
+
             StringBuilder stringBuilder = new StringBuilder();
             reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             // nos permitira ir leyendo lo que traemos

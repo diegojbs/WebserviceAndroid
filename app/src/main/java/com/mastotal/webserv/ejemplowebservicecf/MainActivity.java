@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }*/
 
-            String content = HttpManager.getData(params[0]);
+            String content = HttpManager.getData(params[0], "pepito", "pepito");
 
             //return "Terminamos";
             return content;
