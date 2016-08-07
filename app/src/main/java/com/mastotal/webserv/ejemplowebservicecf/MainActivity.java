@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mastotal.webserv.ejemplowebservicecf.Adapters.MyAdapter;
 import com.mastotal.webserv.ejemplowebservicecf.POJO.Usuario;
 import com.mastotal.webserv.ejemplowebservicecf.Parsers.UsuarioJSONParser;
 import com.mastotal.webserv.ejemplowebservicecf.Parsers.UsuarioXMLParser;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     List<Usuario> usuarioList;
 
     ListView listView;
+
+    MyAdapter adapter;
 
 
     @Override
@@ -65,11 +68,11 @@ public class MainActivity extends AppCompatActivity {
                     // Pedir datos con XML
                     //pedirDatos("http://chat.mastotal.com/usuarios.xml");
                     //Pedir datos con JSON
-                    //pedirDatos("http://maloschistes.com/maloschistes.com/jose/webservice.php");
+                    pedirDatos("http://maloschistes.com/maloschistes.com/jose/webservice.php");
                     //pedir datos sin seguridad
                     //pedirDatos("http://mastotal.com/webservice/webservice.php");
                     //pedir datos con seguridad
-                    pedirDatos("http://maloschistes.com/maloschistes.com/jose/s/webservice.php");
+                    //pedirDatos("http://maloschistes.com/maloschistes.com/jose/s/webservice.php");
 
 
                 }else{
@@ -83,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     public void cargarDatos(){
 
         //textView.append(datos + "\n");
-        if (usuarioList != null){
+        /*if (usuarioList != null){
             //forech
             for (Usuario usuario: usuarioList) {
                 textView.append(usuario.getUsuarioId() + "\n");
@@ -92,7 +95,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-        }
+        }*/
+        adapter = new MyAdapter(getApplicationContext(),usuarioList);
+        listView.setAdapter(adapter);
     }
 
     //verificar conectidad a internet
