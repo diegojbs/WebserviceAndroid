@@ -60,7 +60,11 @@ public class MainActivity extends AppCompatActivity {
                     // Pedir datos con XML
                     //pedirDatos("http://chat.mastotal.com/usuarios.xml");
                     //Pedir datos con JSON
-                    pedirDatos("http://maloschistes.com/maloschistes.com/jose/webservice.php");
+                    //pedirDatos("http://maloschistes.com/maloschistes.com/jose/webservice.php");
+                    //pedir datos sin seguridad
+                    //pedirDatos("http://mastotal.com/webservice/webservice.php");
+                    //pedir datos con seguridad
+                    pedirDatos("http://maloschistes.com/maloschistes.com/jose/s/webservice.php");
 
 
                 }else{
@@ -145,19 +149,30 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
+            //remover el hilo
+            /*taskList.remove(this);
+            if (taskList.size() == 0){
+                progressBar.setVisibility(View.GONE);
+            }*/
+
             //llamado a parsear los datos XML
             //usuarioList = UsuarioXMLParser.parser(result);
 
             //llamado a parsear los datos JSON
+
+
+            if (result == null){
+                Toast.makeText(MainActivity.this, "No se pudo conectar", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
+                return; // para no llegar al final para que no salga error
+            }
+
             usuarioList = UsuarioJSONParser.parse(result);
 
             cargarDatos();
+            progressBar.setVisibility(View.GONE);
 
-            //remover el hilo
-            taskList.remove(this);
-            if (taskList.size() == 0){
-                progressBar.setVisibility(View.GONE);
-            }
+
 
 
 
