@@ -90,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
         }*/
         adapter = new UsuariosAdapter(getApplicationContext(),usuarioList);
         recyclerView.setAdapter(adapter);
+        //nos ayudara
+        recyclerView.setHasFixedSize(true);
     }
 
     //verificar conectidad a internet
