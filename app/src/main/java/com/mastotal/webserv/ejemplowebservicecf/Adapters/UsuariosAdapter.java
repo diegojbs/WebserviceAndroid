@@ -1,6 +1,7 @@
 package com.mastotal.webserv.ejemplowebservicecf.Adapters;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,9 +55,11 @@ public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView title;
         ImageView imageView;
+        CardView cardView;
 
         public ViewHolder(View item) {
             super(item);
+            cardView= (CardView) item.findViewById(R.id.cardView);
             title = (TextView) item.findViewById(R.id.title);
             imageView = (ImageView) item.findViewById(R.id.imageView);
         }
