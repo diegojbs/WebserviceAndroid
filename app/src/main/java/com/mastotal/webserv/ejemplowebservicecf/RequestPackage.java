@@ -1,5 +1,8 @@
 package com.mastotal.webserv.ejemplowebservicecf;
 
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,5 +42,25 @@ public class RequestPackage {
     public void setParam(String key, String value) {
 
         params.put(key,value);
+    }
+
+    //codificar la url y parametros para la peticion al server
+    public String getEncodeParams(){
+        StringBuilder sb = new StringBuilder();
+        for (String key:params.keySet()) {
+            String value = null;
+            try {
+                value = URLEncoder.encode(params.get(key), "UTF-8");
+
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            if(sb.length()>0){
+                sb.append("&");
+            }
+            sb.append(key + "=" + value);
+        }
+        return sb.toString();
     }
 }
