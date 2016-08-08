@@ -7,14 +7,14 @@
     android:orientation="vertical"
     tools:context="com.mastotal.webserv.ejemplowebservicecf.MainActivity">
 
-    <android.support.v7.widget.RecyclerView
+   <!--<android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </android.support.v7.widget.RecyclerView>
+    </android.support.v7.widget.RecyclerView>-->
 
-    <!--<ProgressBar
+    <ProgressBar
         android:layout_gravity="center_horizontal"
         android:id="@+id/progressbar"
         android:layout_width="50dp"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:text=" "
         android:scrollbars="vertical"/>
-    <ListView
+    <!--<ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

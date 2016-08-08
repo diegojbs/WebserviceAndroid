@@ -30,16 +30,16 @@ public class MainActivity extends AppCompatActivity {
     Button boton;
     TextView textView;
     ProgressBar progressBar;
-    List<MyYTask> taskList;
+    //List<MyYTask> taskList;
 
     // crear la lista de objetos Usuario
-    List<Usuario> usuarioList;
+    //List<Usuario> usuarioList;
 
     //ListView listView;
     //MyAdapter adapter;
 
-    RecyclerView recyclerView;
-    UsuariosAdapter adapter;
+    //RecyclerView recyclerView;
+    //UsuariosAdapter adapter;
 
 
     @Override
@@ -47,32 +47,37 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*boton = (Button) findViewById(R.id.boton);
+        boton = (Button) findViewById(R.id.boton);
         textView = (TextView) findViewById(R.id.textView);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
-        progressBar.setVisibility(View.INVISIBLE);*/
+        progressBar.setVisibility(View.INVISIBLE);
 
         //Configurar recyclerView
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        /*recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setLayoutManager(linearLayoutManager);*/
 
 
         //textView.setMovementMethod(new ScrollingMovementMethod());// esta linea hace que el scroll funcione
 
         //taskList = new ArrayList<>();
 
-        if (isOnLine()){
-            //Toast.makeText(getApplicationContext(), "Conectado a internet", Toast.LENGTH_SHORT).show();
-            //webservice con imagenes
-            pedirDatos("http://maloschistes.com/maloschistes.com/jose/webserviceI.php");
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isOnLine()){
+                    //Toast.makeText(getApplicationContext(), "Conectado a internet", Toast.LENGTH_SHORT).show();
+                    //webservice con imagenes
+                    pedirDatos("http://maloschistes.com/maloschistes.com/jose/webserviceI.php");
 
 
-        }else{
-            Toast.makeText(getApplicationContext(), "Sin conexión", Toast.LENGTH_SHORT).show();
-        }
+                }else{
+                    Toast.makeText(getApplicationContext(), "Sin conexión", Toast.LENGTH_SHORT).show();
+                }
 
+            }
+        });
     }
 
     public void cargarDatos(){
@@ -88,10 +93,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }*/
-        adapter = new UsuariosAdapter(getApplicationContext(),usuarioList);
-        recyclerView.setAdapter(adapter);
+        //adapter = new UsuariosAdapter(getApplicationContext(),usuarioList);
+        //recyclerView.setAdapter(adapter);
         //nos ayudara
-        recyclerView.setHasFixedSize(true);
+        //recyclerView.setHasFixedSize(true);
     }
 
     //verificar conectidad a internet
@@ -172,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                 return; // para no llegar al final para que no salga error
             }
 
-            usuarioList = UsuarioJSONParser.parse(result);
+            //usuarioList = UsuarioJSONParser.parse(result);
 
             cargarDatos();
             //progressBar.setVisibility(View.GONE);
