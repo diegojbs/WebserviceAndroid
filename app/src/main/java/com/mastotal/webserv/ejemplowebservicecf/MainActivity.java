@@ -69,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
                 if (isOnLine()){
                     //Toast.makeText(getApplicationContext(), "Conectado a internet", Toast.LENGTH_SHORT).show();
                     //webservice con imagenes
-                    pedirDatos("http://maloschistes.com/maloschistes.com/jose/webserviceI.php");
+                    //pedirDatos("http://maloschistes.com/maloschistes.com/jose/webserviceI.php");
+                    // Webservice para request
+                    pedirDatos("http://maloschistes.com/maloschistes.com/jose/webservicesend.php");
 
 
                 }else{
@@ -119,14 +121,10 @@ public class MainActivity extends AppCompatActivity {
         RequestPackage requestPackage = new RequestPackage();
         requestPackage.setMethod("GET");
         requestPackage.setUri(uri);
-        requestPackage.setParam("Parametro1", "Valor1");
-        requestPackage.setParam("Parametro2", "Valor2");
-        requestPackage.setParam("Parametro3", "Valor3");
-        requestPackage.setParam("Parametro4", "Valor4");
-        requestPackage.setParam("Parametro5", "Valor5");
-        requestPackage.setParam("Parametro6", "Valor6");
-        requestPackage.setParam("Parametro7", "Valor7");
-        requestPackage.setParam("Parametro8", "Valor8");
+        requestPackage.setParam("nombre", "Valor1");
+        requestPackage.setParam("animal", "Valor2");
+        requestPackage.setParam("id", "Valor3");
+
 
         task.execute(requestPackage);
         //task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -141,11 +139,11 @@ public class MainActivity extends AppCompatActivity {
             super.onPreExecute();
             //cargarDatos("Inicio de carga");
 
-            /*if(taskList.size() == 0) {
+            //if(taskList.size() == 0) {
                 progressBar.setVisibility(View.VISIBLE);
-            }
+            //}
             // agregar hilos a la list que tenemos
-            taskList.add(this);*/
+            //taskList.add(this);*/
         }
 
         @Override
@@ -172,10 +170,10 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(result);
 
             //remover el hilo
-            /*taskList.remove(this);
-            if (taskList.size() == 0){
+            //taskList.remove(this);
+            //if (taskList.size() == 0){
                 progressBar.setVisibility(View.GONE);
-            }*/
+            //}*/
 
             //llamado a parsear los datos XML
             //usuarioList = UsuarioXMLParser.parser(result);
