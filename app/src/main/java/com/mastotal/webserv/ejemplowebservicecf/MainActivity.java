@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
         MyYTask task = new MyYTask();
         RequestPackage requestPackage = new RequestPackage();
-        requestPackage.setMethod("GET");
+        requestPackage.setMethod("POST");
         requestPackage.setUri(uri);
         requestPackage.setParam("nombre", "Valor1");
         requestPackage.setParam("animal", "Valor2");

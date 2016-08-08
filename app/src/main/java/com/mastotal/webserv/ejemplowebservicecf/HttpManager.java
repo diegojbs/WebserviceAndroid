@@ -5,6 +5,8 @@ import android.util.Base64;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -31,6 +33,14 @@ public class HttpManager {
 
             //tanto para get como post
             connection.setRequestMethod(requestPackage.getMethod());
+
+            if (requestPackage.getMethod().equals("POST")){
+                connection.setDoOutput(true);
+                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(connection.getOutputStream());
+                outputStreamWriter.write(requestPackage.getEncodeParams());
+                //ejecutamos
+                outputStreamWriter.flush();
+            }
 
             reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             // nos permitira ir leyendo lo que traemos
