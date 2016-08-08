@@ -28,6 +28,10 @@ public class HttpManager {
             URL url = new URL(uri);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             StringBuilder stringBuilder = new StringBuilder();
+
+            //tanto para get como post
+            connection.setRequestMethod(requestPackage.getMethod());
+
             reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             // nos permitira ir leyendo lo que traemos
             String line;
