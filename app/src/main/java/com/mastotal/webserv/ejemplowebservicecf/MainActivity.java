@@ -80,9 +80,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void cargarDatos(){
+    public void cargarDatos(String datos){
 
-        //textView.append(datos + "\n");
+        textView.append(datos + "\n");
         /*if (usuarioList != null){
             //forech
             for (Usuario usuario: usuarioList) {
@@ -116,13 +116,25 @@ public class MainActivity extends AppCompatActivity {
     public void pedirDatos(String uri){
 
         MyYTask task = new MyYTask();
-        task.execute(uri);
+        RequestPackage requestPackage = new RequestPackage();
+        requestPackage.setMethod("GET");
+        requestPackage.setUri(uri);
+        requestPackage.setParam("Parametro1", "Valor1");
+        requestPackage.setParam("Parametro2", "Valor2");
+        requestPackage.setParam("Parametro3", "Valor3");
+        requestPackage.setParam("Parametro4", "Valor4");
+        requestPackage.setParam("Parametro5", "Valor5");
+        requestPackage.setParam("Parametro6", "Valor6");
+        requestPackage.setParam("Parametro7", "Valor7");
+        requestPackage.setParam("Parametro8", "Valor8");
+
+        task.execute(requestPackage);
         //task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
     }
 
 
-    private class MyYTask extends AsyncTask<String, String, String>{
+    private class MyYTask extends AsyncTask<RequestPackage, String, String>{
 
         @Override
         protected void onPreExecute() {
@@ -137,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected String doInBackground(String... params) {
+        protected String doInBackground(RequestPackage... params) {
 
             /*for (int i = 0; i<= 10; i++){
                     publishProgress("Numero: " + i);
@@ -179,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
             //usuarioList = UsuarioJSONParser.parse(result);
 
-            cargarDatos();
+            cargarDatos(result);
             //progressBar.setVisibility(View.GONE);
 
 
