@@ -15,8 +15,15 @@ import java.net.URL;
 public class HttpManager {
 
     // El siguiente metodo va a traer los datos
-    public static String getData(String uri){
+    public static String getData(RequestPackage requestPackage){
         BufferedReader reader = null;
+        String uri = requestPackage.getUri();
+
+        //prepararme para recibir el metodo GET
+        if(requestPackage.getMethod().equals("GET")){
+            uri+= "?" + requestPackage.getEncodeParams();
+        }
+
         try {
             URL url = new URL(uri);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
